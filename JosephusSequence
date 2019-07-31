@@ -1,0 +1,21 @@
+import java.util.*;
+public class Main {
+    private static Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
+        int n,k; n = in.nextInt(); k = in.nextInt();
+        ArrayList<Integer> array = new ArrayList<>();
+        ArrayList<Integer> answer = new ArrayList<>();
+        for (int a = 0; a < n; a++) array.add(a + 1);
+        int index = -1;
+        for (int a = 0; a < n; a++) {
+            index += k;
+            index %= array.size();
+            answer.add(array.get(index));
+            array.remove(index);
+            index -= 1;
+        }
+        System.out.print("<" + answer.get(0));
+        for (int a = 1; a < n; a++) System.out.print(", " + answer.get(a));
+        System.out.print(">");
+    }
+}
