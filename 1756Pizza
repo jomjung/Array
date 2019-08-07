@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int d,n;
+int main(int argc, const char * argv[]) {
+    scanf("%d%d", &d, &n);
+    int width[d];
+    int width2[d];
+    int doughsize[n];
+    for (int i=0; i<d; i++) scanf("%d", &width[i]);
+    for (int i=0; i<n; i++) scanf("%d", &doughsize[i]);
+    for (int i=0; i<d; i++) width2[i] = width[i];
+    for (int i=1; i<d; i++) if (width2[i] > width2[i-1]) width2[i] = width2[i-1];
+    int index = d-1;
+    for (int i=0; i<n; i++) {
+        while (width2[index] < doughsize[i]){
+            index--;
+            if (index < 0) {
+                printf("0");
+                return 0;
+            }
+        }
+        index--;
+    }
+    printf("%d",index+2);
+    return 0;
+}
